@@ -1,1 +1,2690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Yoga Health Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --gold-light: #FFD700;
+            --gold-primary: #D4AF37;
+            --gold-secondary: #B8860B;
+            --gold-dark: #996515;
+            --black-deep: #0A0A0A;
+            --black-surface: #121212;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Background Image Layers with 70% Visibility */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: linear-gradient(145deg, #000000 70%, rgba(212, 175, 55, 0.05) 100%);
+        }
+        
+        .quiz-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .analysis-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .yoga-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .modal-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+
+        /* Question Popup Background */
+        .question-popup-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            z-index: -9;
+        }
+
+        /* iPhone 12 Mini Optimization */
+        @media (max-width: 375px) {
+            .container { padding: 12px !important; }
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+            .btn { padding: 12px 16px !important; font-size: 14px !important; }
+            .card { padding: 14px !important; }
+        }
+
+        /* Main Container */
+        .main-container {
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.9),
+                0 0 24px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* 3D Text Effects */
+        .text-3d-gold {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.1),
+                0 4px 0 rgba(212, 175, 55, 0.1),
+                0 5px 0 rgba(212, 175, 55, 0.08),
+                0 6px 1px rgba(0, 0, 0, 0.1),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.25);
+            color: var(--gold-light);
+        }
+        
+        .text-3d-white {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(255, 255, 255, 0.05),
+                0 4px 0 rgba(255, 255, 255, 0.04),
+                0 5px 0 rgba(255, 255, 255, 0.03),
+                0 6px 1px rgba(0, 0, 0, 0.1),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+        }
+        
+        .text-3d-secondary {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.05),
+                0 2px 0 rgba(255, 255, 255, 0.04),
+                0 3px 0 rgba(212, 175, 55, 0.08),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Gold Effects with 3D */
+        .gold-shimmer {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 25%, #FFFFFF 50%, var(--gold-primary) 75%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.1);
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Buttons with 3D Effects */
+        .gold-btn {
+            background: linear-gradient(135deg, var(--gold-secondary) 0%, var(--gold-primary) 100%);
+            color: #000;
+            font-weight: 800;
+            border: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 4px 0 var(--gold-dark),
+                0 6px 10px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .gold-btn:hover, .gold-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 0 var(--gold-dark),
+                0 8px 15px rgba(212, 175, 55, 0.4),
+                0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gold-btn:active {
+            transform: translateY(1px);
+            box-shadow: 
+                0 2px 0 var(--gold-dark),
+                0 3px 5px rgba(212, 175, 55, 0.3);
+        }
+        
+        .secondary-btn {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold-light);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .secondary-btn:hover, .secondary-btn:active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-primary);
+            box-shadow: 
+                0 4px 0 rgba(0, 0, 0, 0.3),
+                0 7px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .option-btn {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.2s ease;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.2),
+                0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-btn:hover, .option-btn:active {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.12);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Yoga Cards with 3D */
+        .yoga-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .yoga-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 5px 0 rgba(0, 0, 0, 0.2),
+                0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .yoga-card.current {
+            border-color: var(--gold-primary);
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(212, 175, 55, 0.18));
+            animation: pulse-glow 2s infinite;
+            box-shadow: 
+                0 4px 0 rgba(212, 175, 55, 0.3),
+                0 6px 15px rgba(212, 175, 55, 0.25),
+                0 0 20px rgba(212, 175, 55, 0.1);
+        }
+        
+        .yoga-card.locked {
+            opacity: 0.4;
+            filter: grayscale(1);
+            pointer-events: none;
+        }
+        
+        .yoga-card.completed {
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.12);
+            box-shadow: 
+                0 3px 0 rgba(16, 185, 129, 0.3),
+                0 5px 10px rgba(16, 185, 129, 0.15);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 4px 0 rgba(212, 175, 55, 0.3),
+                    0 6px 15px rgba(212, 175, 55, 0.25),
+                    0 0 20px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 4px 0 rgba(212, 175, 55, 0.3),
+                    0 6px 20px rgba(212, 175, 55, 0.35),
+                    0 0 25px rgba(212, 175, 55, 0.15);
+            }
+        }
+
+        /* Progress Bar with 3D */
+        .progress-bar {
+            background: linear-gradient(90deg, var(--gold-secondary), var(--gold-primary));
+            background-size: 200% auto;
+            animation: shine 2s linear infinite;
+            height: 8px;
+            border-radius: 10px;
+            box-shadow: 
+                0 2px 0 rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-bar-container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.5),
+                0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Badges with 3D */
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        .badge-gold {
+            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+            color: black;
+            box-shadow: 
+                0 3px 0 var(--gold-dark),
+                0 5px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Video Container - Custom Player with 3D - 16:9 Aspect Ratio */
+        .video-container {
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--gold-primary);
+            position: relative;
+            box-shadow: 
+                0 8px 0 rgba(0, 0, 0, 0.4),
+                0 15px 30px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* 16:9 Aspect Ratio Container */
+        .aspect-ratio-16-9 {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 = 0.5625) */
+        }
+
+        .aspect-ratio-16-9 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Category Tags with 3D */
+        .category-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Solution Highlight with 3D */
+        .solution-highlight {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), transparent);
+            border-left: 3px solid var(--gold-primary);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Safe Areas */
+        .safe-area-top { padding-top: env(safe-area-inset-top); }
+        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Yoga Status with 3D */
+        .yoga-status {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-current { 
+            background: rgba(212, 175, 55, 0.25); 
+            color: var(--gold-light); 
+            box-shadow: 0 2px 0 rgba(212, 175, 55, 0.3);
+        }
+        .status-completed { 
+            background: rgba(16, 185, 129, 0.25); 
+            color: #10B981; 
+            box-shadow: 0 2px 0 rgba(16, 185, 129, 0.3);
+        }
+
+        /* Number Indicators with 3D */
+        .number-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.3),
+                0 5px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .number-current {
+            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+            color: black;
+            animation: pulse 2s infinite;
+            box-shadow: 
+                0 3px 0 var(--gold-dark),
+                0 5px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .number-completed {
+            background: #10B981;
+            color: white;
+            box-shadow: 
+                0 3px 0 #0A8F6E,
+                0 5px 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .number-locked {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 3px 0 var(--gold-dark),
+                    0 5px 10px rgba(212, 175, 55, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    0 4px 0 var(--gold-dark),
+                    0 7px 15px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        /* Question Text with Enhanced Visibility */
+        .question-text {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 0 10px rgba(212, 175, 55, 0.2),
+                0 0 20px rgba(212, 175, 55, 0.1);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        
+        .hint-text {
+            text-shadow: 
+                0 1px 0 rgba(0, 0, 0, 0.5),
+                0 0 5px rgba(212, 175, 55, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Section Labels */
+        .section-label {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(212, 175, 55, 0.1),
+                0 0 8px rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            letter-spacing: 0.08em;
+        }
+
+        /* Score Display with 3D */
+        .score-display {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.15),
+                0 4px 0 rgba(212, 175, 55, 0.1),
+                0 0 15px rgba(212, 175, 55, 0.3);
+            font-weight: 900;
+        }
+
+        /* Responsive Backgrounds - Ensure visibility on mobile */
+        @media (max-width: 768px) {
+            .quiz-background,
+            .analysis-background,
+            .yoga-background,
+            .modal-background,
+            .question-popup-bg {
+                background-attachment: scroll;
+                opacity: 0.7 !important;
+            }
+            
+            .quiz-background::before,
+            .analysis-background::before,
+            .yoga-background::before,
+            .modal-background::before,
+            .question-popup-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: -1;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--gold-secondary), var(--gold-primary));
+            border-radius: 10px;
+        }
+
+        /* Header Logo Glow */
+        .logo-glow {
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3))
+                    drop-shadow(0 0 20px rgba(212, 175, 55, 0.2))
+                    drop-shadow(0 0 30px rgba(212, 175, 55, 0.1));
+        }
+
+        /* Glass Effect for Cards */
+        .glass-effect {
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure text is readable on background */
+        .text-on-bg {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Question Popup Container */
+        .question-popup-container {
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.9),
+                0 0 24px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+        }
+
+        /* Enhanced vertical scrolling */
+        .scrollable-content {
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Yoga list with better scrolling */
+        .yoga-list-container {
+            max-height: 50vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-0">
+    <!-- Background Layers - All with 70% opacity -->
+    <div class="background-layer"></div>
+    <div class="quiz-background" id="quiz-bg"></div>
+    <div class="analysis-background hidden" id="analysis-bg"></div>
+    <div class="yoga-background hidden" id="yoga-bg"></div>
+    
+    <div class="w-full min-h-screen safe-area-top safe-area-bottom flex items-center justify-center px-3 text-on-bg">
+        <div class="w-full max-w-md main-container rounded-xl p-4 fade-in">
+            
+            <!-- Header -->
+            <header class="text-center mb-6">
+                <div class="flex justify-center mb-4">
+                    <!-- Logo can be added here -->
+                </div>
+                <h1 class="text-2xl font-black text-3d-gold mb-2 tracking-tight">YOGA HEALTH PRO</h1>
+                <p class="text-xs text-gold-light/80 font-bold uppercase tracking-wider text-3d-secondary">HOLISTIC WELLNESS PARTNER</p>
+            </header>
+
+            <!-- Main Content - Scrollable Area -->
+            <div class="scrollable-content custom-scrollbar">
+                <main id="app-content" class="mb-4">
+                    <!-- Progress -->
+                    <div id="progress-section" class="mb-5">
+                        <div class="flex justify-between items-center mb-2">
+                            <span id="step-label" class="text-xs font-bold section-label uppercase tracking-wider">Yoga Assessment</span>
+                            <span id="question-counter" class="text-xs font-bold text-gold-light text-3d-secondary">1/50</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div id="progress-bar" class="progress-bar w-5"></div>
+                        </div>
+                        <p id="progress-text" class="text-xs text-gray-300 mt-1.5 text-center text-3d-secondary">Comprehensive yoga health evaluation...</p>
+                    </div>
+
+                    <!-- Quiz Section -->
+                    <div id="quiz-section" class="fade-in">
+                        <div class="mb-5">
+                            <h2 id="question-text" class="text-lg font-bold question-text mb-3"></h2>
+                            <p id="question-hint" class="text-xs hint-text hidden"></p>
+                        </div>
+                        <div id="options-container" class="space-y-2.5"></div>
+                    </div>
+
+                    <!-- Analysis Section -->
+                    <div id="analysis-section" class="hidden">
+                        <div class="text-center mb-5">
+                            <h2 class="text-xl font-black text-3d-gold mb-2">Assessment Complete!</h2>
+                            <p class="text-xs text-gold-light/80 font-bold mb-4 text-3d-secondary">Your Personalized Yoga Health Report</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3 mb-4">
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Yoga Focus</div>
+                                <div id="focus-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Wellness Level</div>
+                                <div id="wellness-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Program Length</div>
+                                <div id="program-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 mb-5 solution-highlight">
+                            <h3 class="text-sm font-bold text-white mb-2 flex items-center text-3d-white">
+                                <i class="fas fa-spa text-gold-primary mr-2"></i> Yoga Solution Prescription
+                            </h3>
+                            <p id="analysis-text" class="text-sm text-gray-300 leading-relaxed text-3d-secondary">
+                                Analyzing your 50-point assessment for precise yoga program...
+                            </p>
+                            <div id="solution-points" class="mt-3 space-y-2"></div>
+                        </div>
+                        
+                        <button onclick="showYogaProgram()" class="w-full gold-btn py-3.5 rounded-lg text-sm font-bold">
+                            <i class="fas fa-clipboard-check mr-2"></i> View Prescribed Yoga Protocol
+                        </button>
+                    </div>
+
+                    <!-- Yoga Program Section -->
+                    <div id="yoga-section" class="hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <h2 class="text-lg font-bold text-3d-white mb-1.5">Yoga Protocol</h2>
+                                <div class="flex items-center">
+                                    <span class="badge badge-gold mr-2">Day <span id="current-day">1</span>/30</span>
+                                    <span id="completion-stats" class="text-xs text-gray-400 text-3d-secondary">0/6 completed</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-gold-primary animate-pulse"></div>
+                                    <span class="text-xs text-gold-primary font-bold text-3d-secondary">Current</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 p-3.5 bg-gradient-to-r from-black/50 to-gold-primary/10 rounded-lg border border-gold-primary/15 glass-effect">
+                            <h3 class="text-sm font-bold text-white mb-1.5 flex items-center text-3d-white">
+                                <i class="fas fa-om text-gold-primary mr-2"></i> Yoga Protocol Rules
+                            </h3>
+                            <p class="text-xs text-gray-300 text-3d-secondary">Complete poses in prescribed sequence. Watch each video fully before proceeding.</p>
+                        </div>
+                        
+                        <div id="yoga-list" class="yoga-list-container space-y-3 pr-1.5 pb-2 custom-scrollbar"></div>
+                        
+                        <button onclick="restartAssessment()" class="w-full mt-4 py-3 bg-black/50 border border-gold-primary/30 text-gold-primary rounded-lg text-sm font-bold glass-effect">
+                            <i class="fas fa-redo mr-2"></i> New Assessment
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal with Next Button - VERTICALLY CENTERED -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden flex flex-col items-center justify-center p-3">
+        <!-- Modal Background -->
+        <div class="modal-background"></div>
+        
+        <!-- Vertical Centering Container -->
+        <div class="flex-1 flex flex-col items-center justify-center w-full">
+            <div class="w-full max-w-md z-10 text-on-bg">
+                <div class="video-container">
+                    <div class="relative">
+                        <button onclick="closeVideoModal()" class="absolute top-3 right-3 z-20 bg-black/90 p-2.5 rounded-full border border-gold-primary/20">
+                            <i class="fas fa-times text-white text-sm"></i>
+                        </button>
+                        <!-- 16:9 Aspect Ratio Container -->
+                        <div class="aspect-ratio-16-9" id="video-frame">
+                            <!-- YouTube iframe will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-4 bg-black/95 rounded-lg border border-gold-primary/20 glass-effect">
+                    <h3 id="video-title" class="text-sm font-bold text-white mb-2 text-3d-white"></h3>
+                    <p id="video-description" class="text-xs text-gray-300 mb-3 text-3d-secondary"></p>
+                    <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+                        <span class="flex items-center"><i class="fas fa-clock mr-1.5"></i> Duration: <span id="video-duration" class="font-bold ml-1">5:00</span></span>
+                        <span class="flex items-center"><i class="fas fa-redo mr-1.5"></i> Holds: <span id="video-holds" class="font-bold ml-1">3x</span></span>
+                        <span class="category-tag" id="video-category"></span>
+                    </div>
+                    
+                    <div id="solution-benefit" class="mb-4 p-3 rounded bg-black/60 border border-gold-primary/15">
+                        <div class="flex items-center mb-1.5">
+                            <i class="fas fa-lightbulb text-gold-primary mr-2"></i>
+                            <span class="text-xs font-bold text-gold-light text-3d-secondary">Health Benefit:</span>
+                        </div>
+                        <p id="solution-text" class="text-xs text-gray-300 text-3d-secondary"></p>
+                    </div>
+                    
+                    <div class="flex gap-3">
+                        <button onclick="repeatCurrentVideo()" class="flex-1 secondary-btn py-3 rounded-lg text-sm font-bold">
+                            <i class="fas fa-redo mr-1.5"></i> Repeat
+                        </button>
+                        <button onclick="nextVideo()" class="flex-1 gold-btn py-3 rounded-lg text-sm font-bold">
+                            Next <i class="fas fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // ==================== STATE MANAGEMENT ====================
+    let appState = {
+        currentQuestion: 0,
+        gender: null,
+        age: null,
+        primaryGoal: null,
+        healthCondition: null,
+        experience: null,
+        symptoms: [],
+        scores: { flexibility: 0, strength: 0, stress: 0, balance: 0, pain: 0, focus: 0 },
+        currentDay: 1,
+        completedYogas: [],
+        totalQuestions: 50,
+        selectedCategory: null,
+        selectedYogas: [],
+        currentVideoIndex: 0,
+        userProfile: {},
+        dayProgress: {},
+        dayYogas: {}
+    };
+
+    // ==================== COMPREHENSIVE YOGA LIBRARY ====================
+    const yogaLibrary = {
+        // 1️⃣ BEGINNER FOUNDATIONAL POSES (12 poses)
+        beginner: [
+            {
+                id: "B1",
+                name: "Mountain Pose (Tadasana)",
+                description: "Foundation for all standing poses",
+                category: "beginner",
+                subcategory: "standing",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "3 × 30s",
+                videoCode: "9X5_U4D1uDk",
+                benefit: "Improves posture, balance, and awareness",
+                solution: "Establishes proper alignment for all yoga poses",
+                focus: ["posture", "balance"]
+            },
+            {
+                id: "B2",
+                name: "Downward Dog (Adho Mukha Svanasana)",
+                description: "Full-body stretch and strength",
+                category: "beginner",
+                subcategory: "inversion",
+                difficulty: "beginner",
+                duration: "6:15",
+                holds: "3 × 30s",
+                videoCode: "fD3XitN08nQ",
+                benefit: "Stretches hamstrings, calves, spine",
+                solution: "Builds shoulder strength and flexibility",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "B3",
+                name: "Child's Pose (Balasana)",
+                description: "Resting pose for stress relief",
+                category: "beginner",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "4:30",
+                holds: "3 × 60s",
+                videoCode: "ub3X7mC-7i4",
+                benefit: "Relieves back and neck tension",
+                solution: "Calms nervous system, reduces stress",
+                focus: ["relaxation", "stress"]
+            },
+            {
+                id: "B4",
+                name: "Warrior I (Virabhadrasana I)",
+                description: "Foundation for lower body strength",
+                category: "beginner",
+                subcategory: "standing",
+                difficulty: "beginner",
+                duration: "5:45",
+                holds: "3 × 30s each side",
+                videoCode: "bQ8p8pL2eH4",
+                benefit: "Strengthens legs, opens hips",
+                solution: "Builds stability and focus",
+                focus: ["strength", "balance"]
+            },
+            {
+                id: "B5",
+                name: "Warrior II (Virabhadrasana II)",
+                description: "Hip opening and strength building",
+                category: "beginner",
+                subcategory: "standing",
+                difficulty: "beginner",
+                duration: "5:30",
+                holds: "3 × 30s each side",
+                videoCode: "zQpGZfWqWw4",
+                benefit: "Improves hip flexibility, leg strength",
+                solution: "Enhances concentration and endurance",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "B6",
+                name: "Triangle Pose (Trikonasana)",
+                description: "Side body stretch and strength",
+                category: "beginner",
+                subcategory: "standing",
+                difficulty: "beginner",
+                duration: "6:00",
+                holds: "3 × 30s each side",
+                videoCode: "Lx7p6Y2qJq4",
+                benefit: "Stretches hips, hamstrings, spine",
+                solution: "Improves digestion and balance",
+                focus: ["flexibility", "balance"]
+            },
+            {
+                id: "B7",
+                name: "Cat-Cow Pose (Marjaryasana-Bitilasana)",
+                description: "Spinal flexibility and mobility",
+                category: "beginner",
+                subcategory: "floor",
+                difficulty: "beginner",
+                duration: "4:45",
+                holds: "10 cycles",
+                videoCode: "mN3p7q4VvT4",
+                benefit: "Improves spinal flexibility",
+                solution: "Relieves back pain and tension",
+                focus: ["flexibility", "pain"]
+            },
+            {
+                id: "B8",
+                name: "Bridge Pose (Setu Bandhasana)",
+                description: "Gentle backbend for spine health",
+                category: "beginner",
+                subcategory: "backbend",
+                difficulty: "beginner",
+                duration: "5:15",
+                holds: "3 × 30s",
+                videoCode: "pQrR7qRqRq4",
+                benefit: "Strengthens back, glutes, hamstrings",
+                solution: "Relieves mild back pain",
+                focus: ["strength", "pain"]
+            },
+            {
+                id: "B9",
+                name: "Seated Forward Bend (Paschimottanasana)",
+                description: "Hamstring and spine stretch",
+                category: "beginner",
+                subcategory: "seated",
+                difficulty: "beginner",
+                duration: "5:30",
+                holds: "3 × 45s",
+                videoCode: "qWrR7qRqRq4",
+                benefit: "Calms nervous system",
+                solution: "Improves hamstring flexibility",
+                focus: ["flexibility", "stress"]
+            },
+            {
+                id: "B10",
+                name: "Cobra Pose (Bhujangasana)",
+                description: "Gentle backbend for spine strength",
+                category: "beginner",
+                subcategory: "backbend",
+                difficulty: "beginner",
+                duration: "4:30",
+                holds: "5 × 15s",
+                videoCode: "rWrR7qRqRq4",
+                benefit: "Strengthens spine, opens chest",
+                solution: "Improves posture and lung capacity",
+                focus: ["strength", "posture"]
+            },
+            {
+                id: "B11",
+                name: "Tree Pose (Vrikshasana)",
+                description: "Balance and focus training",
+                category: "beginner",
+                subcategory: "balance",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "3 × 30s each side",
+                videoCode: "sWrR7qRqRq4",
+                benefit: "Improves balance and concentration",
+                solution: "Strengthens legs and core",
+                focus: ["balance", "focus"]
+            },
+            {
+                id: "B12",
+                name: "Easy Pose (Sukhasana)",
+                description: "Meditation foundation pose",
+                category: "beginner",
+                subcategory: "meditation",
+                difficulty: "beginner",
+                duration: "7:00",
+                holds: "1 × 5:00",
+                videoCode: "tWrR7qRqRq4",
+                benefit: "Calms mind, improves posture",
+                solution: "Establishes meditation practice",
+                focus: ["focus", "stress"]
+            }
+        ],
+
+        // 2️⃣ INTERMEDIATE STRENGTH POSES (10 poses)
+        intermediate: [
+            {
+                id: "I1",
+                name: "Plank Pose (Phalakasana)",
+                description: "Core and upper body strength",
+                category: "intermediate",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "4:30",
+                holds: "3 × 45s",
+                videoCode: "sWrR7qRqRq4",
+                benefit: "Builds core, arm, shoulder strength",
+                solution: "Foundation for arm balances",
+                focus: ["strength", "core"]
+            },
+            {
+                id: "I2",
+                name: "Chair Pose (Utkatasana)",
+                description: "Leg strength and endurance",
+                category: "intermediate",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "5:00",
+                holds: "3 × 45s",
+                videoCode: "tWrR7qRqRq4",
+                benefit: "Strengthens legs, glutes, core",
+                solution: "Improves balance and stamina",
+                focus: ["strength", "endurance"]
+            },
+            {
+                id: "I3",
+                name: "Warrior III (Virabhadrasana III)",
+                description: "Advanced balance and strength",
+                category: "intermediate",
+                subcategory: "balance",
+                difficulty: "intermediate",
+                duration: "5:30",
+                holds: "3 × 30s each side",
+                videoCode: "uWrR7qRqRq4",
+                benefit: "Improves balance, leg strength",
+                solution: "Enhances full-body coordination",
+                focus: ["balance", "strength"]
+            },
+            {
+                id: "I4",
+                name: "Side Plank (Vasisthasana)",
+                description: "Core and oblique strength",
+                category: "intermediate",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "5:15",
+                holds: "3 × 30s each side",
+                videoCode: "vWrR7qRqRq4",
+                benefit: "Strengthens obliques, shoulders",
+                solution: "Improves lateral stability",
+                focus: ["strength", "core"]
+            },
+            {
+                id: "I5",
+                name: "Half Moon Pose (Ardha Chandrasana)",
+                description: "Balance and hip opening",
+                category: "intermediate",
+                subcategory: "balance",
+                difficulty: "intermediate",
+                duration: "5:45",
+                holds: "3 × 30s each side",
+                videoCode: "wWrR7qRqRq4",
+                benefit: "Improves balance, hip flexibility",
+                solution: "Enhances coordination and focus",
+                focus: ["balance", "flexibility"]
+            },
+            {
+                id: "I6",
+                name: "Camel Pose (Ustrasana)",
+                description: "Heart opening backbend",
+                category: "intermediate",
+                subcategory: "backbend",
+                difficulty: "intermediate",
+                duration: "6:00",
+                holds: "3 × 30s",
+                videoCode: "xWrR7qRqRq4",
+                benefit: "Opens chest, improves posture",
+                solution: "Relieves rounded shoulders",
+                focus: ["flexibility", "posture"]
+            },
+            {
+                id: "I7",
+                name: "Pigeon Pose (Eka Pada Rajakapotasana)",
+                description: "Deep hip opener",
+                category: "intermediate",
+                subcategory: "hip_opener",
+                difficulty: "intermediate",
+                duration: "7:00",
+                holds: "3 × 60s each side",
+                videoCode: "yWrR7qRqRq4",
+                benefit: "Releases hip tension, improves flexibility",
+                solution: "Relieves lower back pain",
+                focus: ["flexibility", "pain"]
+            },
+            {
+                id: "I8",
+                name: "Boat Pose (Navasana)",
+                description: "Core strength and balance",
+                category: "intermediate",
+                subcategory: "core",
+                difficulty: "intermediate",
+                duration: "5:30",
+                holds: "5 × 20s",
+                videoCode: "zWrR7qRqRq4",
+                benefit: "Strengthens core, improves balance",
+                solution: "Builds abdominal strength",
+                focus: ["strength", "core"]
+            },
+            {
+                id: "I9",
+                name: "Wheel Pose (Urdhva Dhanurasana)",
+                description: "Full backbend strength",
+                category: "intermediate",
+                subcategory: "backbend",
+                difficulty: "intermediate",
+                duration: "6:30",
+                holds: "3 × 30s",
+                videoCode: "aXrR7qRqRq4",
+                benefit: "Opens chest, strengthens spine",
+                solution: "Improves spinal flexibility",
+                focus: ["strength", "flexibility"]
+            },
+            {
+                id: "I10",
+                name: "Crow Pose (Bakasana)",
+                description: "Arm balance foundation",
+                category: "intermediate",
+                subcategory: "arm_balance",
+                difficulty: "intermediate",
+                duration: "5:45",
+                holds: "5 × 15s",
+                videoCode: "bXrR7qRqRq4",
+                benefit: "Builds arm strength, core stability",
+                solution: "Develops balance and focus",
+                focus: ["strength", "balance"]
+            }
+        ],
+
+        // 3️⃣ ADVANCED POSES (8 poses)
+        advanced: [
+            {
+                id: "A1",
+                name: "Headstand (Sirsasana)",
+                description: "King of all yoga poses",
+                category: "advanced",
+                subcategory: "inversion",
+                difficulty: "advanced",
+                duration: "8:00",
+                holds: "3 × 60s",
+                videoCode: "aXrR7qRqRq4",
+                benefit: "Improves circulation, focus",
+                solution: "Increases brain oxygenation",
+                focus: ["focus", "balance"]
+            },
+            {
+                id: "A2",
+                name: "Handstand (Adho Mukha Vrksasana)",
+                description: "Full inversion strength",
+                category: "advanced",
+                subcategory: "inversion",
+                difficulty: "advanced",
+                duration: "7:30",
+                holds: "5 × 20s",
+                videoCode: "bXrR7qRqRq4",
+                benefit: "Builds shoulder strength, balance",
+                solution: "Improves body awareness",
+                focus: ["strength", "balance"]
+            },
+            {
+                id: "A3",
+                name: "Forearm Stand (Pincha Mayurasana)",
+                description: "Advanced inversion pose",
+                category: "advanced",
+                subcategory: "inversion",
+                difficulty: "advanced",
+                duration: "7:00",
+                holds: "3 × 45s",
+                videoCode: "cXrR7qRqRq4",
+                benefit: "Strengthens shoulders, core",
+                solution: "Improves balance and focus",
+                focus: ["strength", "focus"]
+            },
+            {
+                id: "A4",
+                name: "King Pigeon Pose (Raja Kapotasana)",
+                description: "Advanced backbend",
+                category: "advanced",
+                subcategory: "backbend",
+                difficulty: "advanced",
+                duration: "8:30",
+                holds: "3 × 60s each side",
+                videoCode: "dXrR7qRqRq4",
+                benefit: "Deep hip and chest opening",
+                solution: "Improves spinal flexibility",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "A5",
+                name: "Scorpion Pose (Vrschikasana)",
+                description: "Extreme backbend and balance",
+                category: "advanced",
+                subcategory: "inversion",
+                difficulty: "advanced",
+                duration: "9:00",
+                holds: "3 × 30s",
+                videoCode: "eXrR7qRqRq4",
+                benefit: "Full body strength and flexibility",
+                solution: "Advanced spinal opening",
+                focus: ["strength", "flexibility"]
+            },
+            {
+                id: "A6",
+                name: "Eight-Angle Pose (Astavakrasana)",
+                description: "Advanced arm balance",
+                category: "advanced",
+                subcategory: "arm_balance",
+                difficulty: "advanced",
+                duration: "7:45",
+                holds: "3 × 30s each side",
+                videoCode: "fXrR7qRqRq4",
+                benefit: "Arm strength, core stability",
+                solution: "Develops advanced coordination",
+                focus: ["strength", "balance"]
+            },
+            {
+                id: "A7",
+                name: "Flying Pigeon Pose (Eka Pada Galavasana)",
+                description: "Arm balance and hip opener",
+                category: "advanced",
+                subcategory: "arm_balance",
+                difficulty: "advanced",
+                duration: "8:15",
+                holds: "3 × 30s each side",
+                videoCode: "gXrR7qRqRq4",
+                benefit: "Hip flexibility, arm strength",
+                solution: "Combines strength and flexibility",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "A8",
+                name: "Lotus Pose (Padmasana)",
+                description: "Advanced meditation pose",
+                category: "advanced",
+                subcategory: "meditation",
+                difficulty: "advanced",
+                duration: "10:00",
+                holds: "1 × 10:00",
+                videoCode: "hXrR7qRqRq4",
+                benefit: "Deep meditation posture",
+                solution: "Improves hip flexibility for sitting",
+                focus: ["focus", "flexibility"]
+            }
+        ],
+
+        // 4️⃣ THERAPEUTIC & RESTORATIVE POSES (8 poses)
+        therapeutic: [
+            {
+                id: "T1",
+                name: "Legs-Up-The-Wall Pose (Viparita Karani)",
+                description: "Gentle inversion for relaxation",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "10:00",
+                holds: "1 × 10:00",
+                videoCode: "gXrR7qRqRq4",
+                benefit: "Reduces swelling, calms nervous system",
+                solution: "Relieves tired legs and feet",
+                focus: ["stress", "relaxation"]
+            },
+            {
+                id: "T2",
+                name: "Supine Twist (Supta Matsyendrasana)",
+                description: "Spinal twist for back relief",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "8:00",
+                holds: "2 × 60s each side",
+                videoCode: "hXrR7qRqRq4",
+                benefit: "Relieves back tension, improves digestion",
+                solution: "Gentle spinal detoxification",
+                focus: ["pain", "flexibility"]
+            },
+            {
+                id: "T3",
+                name: "Supported Bridge Pose",
+                description: "Gentle backbend with support",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "7:00",
+                holds: "3 × 90s",
+                videoCode: "iXrR7qRqRq4",
+                benefit: "Relieves lower back pain",
+                solution: "Opens chest without strain",
+                focus: ["pain", "flexibility"]
+            },
+            {
+                id: "T4",
+                name: "Reclining Bound Angle Pose (Supta Baddha Konasana)",
+                description: "Hip and groin relaxation",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "8:30",
+                holds: "1 × 8:00",
+                videoCode: "jXrR7qRqRq4",
+                benefit: "Opens hips, relieves tension",
+                solution: "Calms nervous system",
+                focus: ["stress", "flexibility"]
+            },
+            {
+                id: "T5",
+                name: "Supported Child's Pose",
+                description: "Restorative version with props",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "3 × 60s",
+                videoCode: "kXrR7qRqRq4",
+                benefit: "Deep relaxation, stress relief",
+                solution: "Releases back and hip tension",
+                focus: ["stress", "relaxation"]
+            },
+            {
+                id: "T6",
+                name: "Fish Pose (Matsyasana)",
+                description: "Chest opening for breathing",
+                category: "therapeutic",
+                subcategory: "backbend",
+                difficulty: "beginner",
+                duration: "5:30",
+                holds: "3 × 60s",
+                videoCode: "lXrR7qRqRq4",
+                benefit: "Improves lung capacity, posture",
+                solution: "Counteracts slumped posture",
+                focus: ["posture", "flexibility"]
+            },
+            {
+                id: "T7",
+                name: "Supported Forward Fold",
+                description: "Gentle hamstring stretch",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "6:00",
+                holds: "3 × 90s",
+                videoCode: "mXrR7qRqRq4",
+                benefit: "Calms nervous system",
+                solution: "Gentle hamstring release",
+                focus: ["stress", "flexibility"]
+            },
+            {
+                id: "T8",
+                name: "Corpse Pose (Savasana)",
+                description: "Complete relaxation pose",
+                category: "therapeutic",
+                subcategory: "restorative",
+                difficulty: "beginner",
+                duration: "15:00",
+                holds: "1 × 15:00",
+                videoCode: "nXrR7qRqRq4",
+                benefit: "Deep relaxation, integration",
+                solution: "Allows body to absorb benefits",
+                focus: ["stress", "relaxation"]
+            }
+        ],
+
+        // 5️⃣ FLEXIBILITY & MOBILITY POSES (8 poses)
+        flexibility: [
+            {
+                id: "F1",
+                name: "Lizard Pose (Utthan Pristhasana)",
+                description: "Deep hip and groin stretch",
+                category: "flexibility",
+                subcategory: "hip_opener",
+                difficulty: "intermediate",
+                duration: "6:30",
+                holds: "3 × 45s each side",
+                videoCode: "mXrR7qRqRq4",
+                benefit: "Improves hip flexibility",
+                solution: "Releases tight hip flexors",
+                focus: ["flexibility", "pain"]
+            },
+            {
+                id: "F2",
+                name: "Butterfly Pose (Baddha Konasana)",
+                description: "Groin and inner thigh stretch",
+                category: "flexibility",
+                subcategory: "hip_opener",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "3 × 60s",
+                videoCode: "nXrR7qRqRq4",
+                benefit: "Increases hip flexibility",
+                solution: "Improves blood circulation",
+                focus: ["flexibility", "circulation"]
+            },
+            {
+                id: "F3",
+                name: "Camel to Rabbit Flow",
+                description: "Spinal flexion and extension",
+                category: "flexibility",
+                subcategory: "spine",
+                difficulty: "intermediate",
+                duration: "7:00",
+                holds: "5 cycles",
+                videoCode: "oXrR7qRqRq4",
+                benefit: "Improves spinal flexibility",
+                solution: "Counterbalances backbends",
+                focus: ["flexibility", "mobility"]
+            },
+            {
+                id: "F4",
+                name: "Thread the Needle Pose",
+                description: "Shoulder and upper back stretch",
+                category: "flexibility",
+                subcategory: "upper_body",
+                difficulty: "beginner",
+                duration: "5:30",
+                holds: "3 × 45s each side",
+                videoCode: "pXrR7qRqRq4",
+                benefit: "Relieves shoulder tension",
+                solution: "Improves shoulder mobility",
+                focus: ["flexibility", "pain"]
+            },
+            {
+                id: "F5",
+                name: "Dragon Pose",
+                description: "Deep hip flexor stretch",
+                category: "flexibility",
+                subcategory: "hip_opener",
+                difficulty: "intermediate",
+                duration: "6:00",
+                holds: "3 × 60s each side",
+                videoCode: "qXrR7qRqRq4",
+                benefit: "Releases tight hip flexors",
+                solution: "Improves hip mobility",
+                focus: ["flexibility", "mobility"]
+            },
+            {
+                id: "F6",
+                name: "Extended Puppy Pose",
+                description: "Spine and shoulder stretch",
+                category: "flexibility",
+                subcategory: "upper_body",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "3 × 60s",
+                videoCode: "rXrR7qRqRq4",
+                benefit: "Stretches spine and shoulders",
+                solution: "Relieves upper back tension",
+                focus: ["flexibility", "stress"]
+            },
+            {
+                id: "F7",
+                name: "Half Splits (Ardha Hanumanasana)",
+                description: "Hamstring stretch preparation",
+                category: "flexibility",
+                subcategory: "legs",
+                difficulty: "intermediate",
+                duration: "6:30",
+                holds: "3 × 60s each side",
+                videoCode: "sXrR7qRqRq4",
+                benefit: "Improves hamstring flexibility",
+                solution: "Prepares for full splits",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "F8",
+                name: "Standing Forward Fold with Twist",
+                description: "Combined hamstring and spine stretch",
+                category: "flexibility",
+                subcategory: "spine",
+                difficulty: "intermediate",
+                duration: "5:45",
+                holds: "3 × 45s each side",
+                videoCode: "tXrR7qRqRq4",
+                benefit: "Improves full body flexibility",
+                solution: "Combines multiple stretches",
+                focus: ["flexibility", "mobility"]
+            }
+        ],
+
+        // 6️⃣ BREATHWORK & MEDITATION (8 practices)
+        breathwork: [
+            {
+                id: "BR1",
+                name: "Ujjayi Pranayama",
+                description: "Ocean breath for focus",
+                category: "breathwork",
+                subcategory: "pranayama",
+                difficulty: "beginner",
+                duration: "8:00",
+                holds: "5 min practice",
+                videoCode: "rXrR7qRqRq4",
+                benefit: "Calms nervous system",
+                solution: "Improves focus during practice",
+                focus: ["focus", "stress"]
+            },
+            {
+                id: "BR2",
+                name: "Nadi Shodhana",
+                description: "Alternate nostril breathing",
+                category: "breathwork",
+                subcategory: "pranayama",
+                difficulty: "intermediate",
+                duration: "10:00",
+                holds: "5 min practice",
+                videoCode: "sXrR7qRqRq4",
+                benefit: "Balances left and right brain",
+                solution: "Reduces anxiety and stress",
+                focus: ["stress", "focus"]
+            },
+            {
+                id: "BR3",
+                name: "Kapalabhati Pranayama",
+                description: "Skull shining breath",
+                category: "breathwork",
+                subcategory: "pranayama",
+                difficulty: "intermediate",
+                duration: "7:00",
+                holds: "3 rounds of 30 breaths",
+                videoCode: "vXrR7qRqRq4",
+                benefit: "Energizes body and mind",
+                solution: "Cleanses respiratory system",
+                focus: ["energy", "focus"]
+            },
+            {
+                id: "BR4",
+                name: "Bhramari Pranayama",
+                description: "Bee breath for relaxation",
+                category: "breathwork",
+                subcategory: "pranayama",
+                difficulty: "beginner",
+                duration: "6:00",
+                holds: "5 min practice",
+                videoCode: "wXrR7qRqRq4",
+                benefit: "Calms mind, reduces stress",
+                solution: "Relieves tension and anxiety",
+                focus: ["stress", "relaxation"]
+            },
+            {
+                id: "BR5",
+                name: "Box Breathing",
+                description: "Equal ratio breathing",
+                category: "breathwork",
+                subcategory: "modern",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "5 min practice",
+                videoCode: "xXrR7qRqRq4",
+                benefit: "Reduces stress, improves focus",
+                solution: "Regulates nervous system",
+                focus: ["stress", "focus"]
+            },
+            {
+                id: "BR6",
+                name: "4-7-8 Breathing",
+                description: "Relaxation breathing technique",
+                category: "breathwork",
+                subcategory: "modern",
+                difficulty: "beginner",
+                duration: "5:00",
+                holds: "5 min practice",
+                videoCode: "yXrR7qRqRq4",
+                benefit: "Promotes relaxation and sleep",
+                solution: "Reduces anxiety quickly",
+                focus: ["stress", "relaxation"]
+            },
+            {
+                id: "BR7",
+                name: "Mindfulness Meditation",
+                description: "Present moment awareness",
+                category: "breathwork",
+                subcategory: "meditation",
+                difficulty: "beginner",
+                duration: "15:00",
+                holds: "15 min practice",
+                videoCode: "zXrR7qRqRq4",
+                benefit: "Reduces stress, improves focus",
+                solution: "Develops mental clarity",
+                focus: ["focus", "stress"]
+            },
+            {
+                id: "BR8",
+                name: "Body Scan Meditation",
+                description: "Progressive relaxation",
+                category: "breathwork",
+                subcategory: "meditation",
+                difficulty: "beginner",
+                duration: "12:00",
+                holds: "12 min practice",
+                videoCode: "aYrR7qRqRq4",
+                benefit: "Reduces body tension",
+                solution: "Improves body awareness",
+                focus: ["relaxation", "stress"]
+            }
+        ],
+
+        // 7️⃣ SPORTS & ATHLETIC PERFORMANCE (8 poses)
+        athletic: [
+            {
+                id: "SP1",
+                name: "Runner's Lunge Series",
+                description: "Dynamic leg and hip opening",
+                category: "athletic",
+                subcategory: "dynamic",
+                difficulty: "intermediate",
+                duration: "8:00",
+                holds: "3 × 30s each side",
+                videoCode: "tXrR7qRqRq4",
+                benefit: "Improves running efficiency",
+                solution: "Prevents running injuries",
+                focus: ["flexibility", "strength"]
+            },
+            {
+                id: "SP2",
+                name: "Warrior Flow for Athletes",
+                description: "Dynamic strength building",
+                category: "athletic",
+                subcategory: "dynamic",
+                difficulty: "intermediate",
+                duration: "10:00",
+                holds: "Flow sequence",
+                videoCode: "uXrR7qRqRq4",
+                benefit: "Builds functional strength",
+                solution: "Improves athletic performance",
+                focus: ["strength", "balance"]
+            },
+            {
+                id: "SP3",
+                name: "Hip Mobility for Athletes",
+                description: "Dynamic hip opening",
+                category: "athletic",
+                subcategory: "mobility",
+                difficulty: "intermediate",
+                duration: "9:00",
+                holds: "Dynamic sequence",
+                videoCode: "zXrR7qRqRq4",
+                benefit: "Improves hip mobility",
+                solution: "Enhances athletic movement",
+                focus: ["mobility", "flexibility"]
+            },
+            {
+                id: "SP4",
+                name: "Recovery Yoga for Athletes",
+                description: "Post-workout recovery",
+                category: "athletic",
+                subcategory: "recovery",
+                difficulty: "beginner",
+                duration: "12:00",
+                holds: "Gentle holds",
+                videoCode: "aYrR7qRqRq4",
+                benefit: "Speeds up recovery",
+                solution: "Reduces muscle soreness",
+                focus: ["recovery", "flexibility"]
+            },
+            {
+                id: "SP5",
+                name: "Balance Training for Sports",
+                description: "Sport-specific balance",
+                category: "athletic",
+                subcategory: "balance",
+                difficulty: "intermediate",
+                duration: "8:30",
+                holds: "Balance challenges",
+                videoCode: "bYrR7qRqRq4",
+                benefit: "Improves sports balance",
+                solution: "Enhances proprioception",
+                focus: ["balance", "focus"]
+            },
+            {
+                id: "SP6",
+                name: "Core Strength for Athletes",
+                description: "Athletic core development",
+                category: "athletic",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "10:00",
+                holds: "Core sequence",
+                videoCode: "cYrR7qRqRq4",
+                benefit: "Builds athletic core",
+                solution: "Improves power transfer",
+                focus: ["strength", "core"]
+            },
+            {
+                id: "SP7",
+                name: "Shoulder Mobility for Sports",
+                description: "Upper body mobility",
+                category: "athletic",
+                subcategory: "mobility",
+                difficulty: "intermediate",
+                duration: "9:00",
+                holds: "Mobility sequence",
+                videoCode: "dYrR7qRqRq4",
+                benefit: "Improves shoulder health",
+                solution: "Prevents shoulder injuries",
+                focus: ["mobility", "strength"]
+            },
+            {
+                id: "SP8",
+                name: "Pre-Workout Activation",
+                description: "Warm-up yoga sequence",
+                category: "athletic",
+                subcategory: "dynamic",
+                difficulty: "beginner",
+                duration: "7:00",
+                holds: "Dynamic flow",
+                videoCode: "eYrR7qRqRq4",
+                benefit: "Prepares body for exercise",
+                solution: "Reduces injury risk",
+                focus: ["mobility", "warmup"]
+            }
+        ]
+    };
+
+    // ==================== COMPREHENSIVE 50 YOGA QUESTIONS ====================
+    const questions = [
+        // Section 1: Personal & Demographic (5 questions)
+        {
+            id: 1,
+            text: "What is your gender?",
+            options: ["Male", "Female", "Prefer not to say"],
+            category: "demographic",
+            scoreMap: { "Male": 0, "Female": 0, "Prefer not to say": 0 }
+        },
+        {
+            id: 2,
+            text: "What is your current age?",
+            options: ["Under 25", "25-34", "35-44", "45-54", "55-64", "65+"],
+            category: "demographic",
+            scoreMap: { "Under 25": 0, "25-34": 5, "35-44": 10, "45-54": 15, "55-64": 20, "65+": 25 }
+        },
+        {
+            id: 3,
+            text: "What is your primary reason for starting yoga?",
+            options: ["Stress relief", "Flexibility", "Strength building", "Pain relief", "Spiritual growth", "Overall wellness"],
+            category: "demographic",
+            scoreMap: { "Stress relief": 20, "Flexibility": 15, "Strength building": 10, "Pain relief": 25, "Spiritual growth": 5, "Overall wellness": 0 }
+        },
+        {
+            id: 4,
+            text: "Any previous injuries or surgeries?",
+            options: ["None", "Back injury", "Knee surgery", "Shoulder injury", "Hip issues", "Multiple injuries"],
+            category: "demographic",
+            scoreMap: { "None": 0, "Back injury": 25, "Knee surgery": 20, "Shoulder injury": 15, "Hip issues": 20, "Multiple injuries": 30 }
+        },
+        {
+            id: 5,
+            text: "Any chronic health conditions?",
+            options: ["None", "Hypertension", "Diabetes", "Arthritis", "Asthma", "Multiple conditions"],
+            category: "demographic",
+            scoreMap: { "None": 0, "Hypertension": 15, "Diabetes": 20, "Arthritis": 25, "Asthma": 15, "Multiple conditions": 30 }
+        },
+
+        // Section 2: Current Health & Symptoms (10 questions)
+        {
+            id: 6,
+            text: "How would you rate your current flexibility?",
+            options: ["Very flexible", "Somewhat flexible", "Average", "Somewhat stiff", "Very stiff"],
+            category: "symptoms",
+            scoreMap: { "Very flexible": 0, "Somewhat flexible": 10, "Average": 20, "Somewhat stiff": 30, "Very stiff": 40 }
+        },
+        {
+            id: 7,
+            text: "Do you experience back pain?",
+            options: ["Never", "Occasionally", "Weekly", "Daily", "Constant pain"],
+            category: "symptoms",
+            scoreMap: { "Never": 0, "Occasionally": 10, "Weekly": 20, "Daily": 30, "Constant pain": 40 }
+        },
+        {
+            id: 8,
+            text: "Do you experience neck or shoulder tension?",
+            options: ["Never", "Occasionally", "Weekly", "Daily", "Constant tension"],
+            category: "symptoms",
+            scoreMap: { "Never": 0, "Occasionally": 10, "Weekly": 20, "Daily": 30, "Constant tension": 40 }
+        },
+        {
+            id: 9,
+            text: "How is your posture during daily activities?",
+            options: ["Excellent posture", "Good posture", "Average", "Frequent slouching", "Poor posture always"],
+            category: "symptoms",
+            scoreMap: { "Excellent posture": 0, "Good posture": 10, "Average": 20, "Frequent slouching": 30, "Poor posture always": 40 }
+        },
+        {
+            id: 10,
+            text: "Do you experience joint pain?",
+            options: ["No joint pain", "Knees occasionally", "Hips occasionally", "Multiple joints", "Chronic joint pain"],
+            category: "symptoms",
+            scoreMap: { "No joint pain": 0, "Knees occasionally": 15, "Hips occasionally": 15, "Multiple joints": 25, "Chronic joint pain": 35 }
+        },
+        {
+            id: 11,
+            text: "How is your balance during daily activities?",
+            options: ["Excellent balance", "Good balance", "Average balance", "Sometimes unsteady", "Frequent balance issues"],
+            category: "symptoms",
+            scoreMap: { "Excellent balance": 0, "Good balance": 5, "Average balance": 15, "Sometimes unsteady": 25, "Frequent balance issues": 35 }
+        },
+        {
+            id: 12,
+            text: "Do you experience headaches or migraines?",
+            options: ["Never", "Rarely", "Monthly", "Weekly", "Daily"],
+            category: "symptoms",
+            scoreMap: { "Never": 0, "Rarely": 5, "Monthly": 15, "Weekly": 25, "Daily": 35 }
+        },
+        {
+            id: 13,
+            text: "How is your digestion?",
+            options: ["Excellent", "Good", "Average", "Poor", "Chronic issues"],
+            category: "symptoms",
+            scoreMap: { "Excellent": 0, "Good": 5, "Average": 15, "Poor": 25, "Chronic issues": 35 }
+        },
+        {
+            id: 14,
+            text: "Do you experience breathing difficulties?",
+            options: ["None", "During exercise", "With allergies", "Asthma symptoms", "Chronic breathing issues"],
+            category: "symptoms",
+            scoreMap: { "None": 0, "During exercise": 10, "With allergies": 15, "Asthma symptoms": 25, "Chronic breathing issues": 35 }
+        },
+        {
+            id: 15,
+            text: "How is your sleep quality?",
+            options: ["Excellent", "Good", "Average", "Poor", "Chronic insomnia"],
+            category: "symptoms",
+            scoreMap: { "Excellent": 0, "Good": 5, "Average": 15, "Poor": 25, "Chronic insomnia": 35 }
+        },
+
+        // Section 3: Lifestyle & Daily Habits (10 questions)
+        {
+            id: 16,
+            text: "What is your occupation?",
+            options: ["Sedentary (desk job)", "Standing job", "Light physical work", "Heavy physical work", "Athlete/Performer"],
+            category: "lifestyle",
+            scoreMap: { "Sedentary (desk job)": 25, "Standing job": 20, "Light physical work": 10, "Heavy physical work": 15, "Athlete/Performer": 5 }
+        },
+        {
+            id: 17,
+            text: "Hours sitting per day?",
+            options: ["< 4 hours", "4-8 hours", "8-10 hours", "10-12 hours", "> 12 hours"],
+            category: "lifestyle",
+            scoreMap: { "< 4 hours": 0, "4-8 hours": 15, "8-10 hours": 25, "10-12 hours": 35, "> 12 hours": 40 }
+        },
+        {
+            id: 18,
+            text: "Regular exercise routine?",
+            options: ["None", "1-2 times/week", "3-4 times/week", "5+ times/week", "Athlete training"],
+            category: "lifestyle",
+            scoreMap: { "None": 30, "1-2 times/week": 20, "3-4 times/week": 10, "5+ times/week": 5, "Athlete training": 0 }
+        },
+        {
+            id: 19,
+            text: "Type of exercise you regularly do?",
+            options: ["None", "Walking", "Running/Cardio", "Weight training", "Team sports", "Mixed training"],
+            category: "lifestyle",
+            scoreMap: { "None": 30, "Walking": 10, "Running/Cardio": 15, "Weight training": 20, "Team sports": 15, "Mixed training": 5 }
+        },
+        {
+            id: 20,
+            text: "Daily stress level?",
+            options: ["Very low", "Low", "Moderate", "High", "Very high"],
+            category: "lifestyle",
+            scoreMap: { "Very low": 0, "Low": 10, "Moderate": 20, "High": 30, "Very high": 40 }
+        },
+        {
+            id: 21,
+            text: "How do you manage stress?",
+            options: ["Meditation/yoga", "Exercise", "Social activities", "No specific method", "Don't manage stress"],
+            category: "lifestyle",
+            scoreMap: { "Meditation/yoga": 0, "Exercise": 10, "Social activities": 15, "No specific method": 25, "Don't manage stress": 35 }
+        },
+        {
+            id: 22,
+            text: "Caffeine consumption?",
+            options: ["None", "1 cup/day", "2-3 cups/day", "4-5 cups/day", "> 5 cups/day"],
+            category: "lifestyle",
+            scoreMap: { "None": 0, "1 cup/day": 5, "2-3 cups/day": 15, "4-5 cups/day": 25, "> 5 cups/day": 35 }
+        },
+        {
+            id: 23,
+            text: "Alcohol consumption?",
+            options: ["None", "Occasionally", "Weekly", "Several times/week", "Daily"],
+            category: "lifestyle",
+            scoreMap: { "None": 0, "Occasionally": 10, "Weekly": 20, "Several times/week": 30, "Daily": 40 }
+        },
+        {
+            id: 24,
+            text: "Smoking or vaping?",
+            options: ["Never", "Former smoker", "Occasionally", "Regular smoker", "Heavy smoker"],
+            category: "lifestyle",
+            scoreMap: { "Never": 0, "Former smoker": 15, "Occasionally": 25, "Regular smoker": 35, "Heavy smoker": 45 }
+        },
+        {
+            id: 25,
+            text: "Daily screen time (excluding work)?",
+            options: ["< 1 hour", "1-2 hours", "3-4 hours", "5-6 hours", "> 6 hours"],
+            category: "lifestyle",
+            scoreMap: { "< 1 hour": 0, "1-2 hours": 10, "3-4 hours": 20, "5-6 hours": 30, "> 6 hours": 40 }
+        },
+
+        // Section 4: Yoga Experience & Goals (8 questions)
+        {
+            id: 26,
+            text: "Previous yoga experience?",
+            options: ["None", "Few classes", "Occasional practice", "Regular practice", "Yoga teacher"],
+            category: "experience",
+            scoreMap: { "None": 30, "Few classes": 20, "Occasional practice": 10, "Regular practice": 5, "Yoga teacher": 0 }
+        },
+        {
+            id: 27,
+            text: "Familiarity with basic yoga poses?",
+            options: ["No knowledge", "Few poses", "Basic knowledge", "Good knowledge", "Expert knowledge"],
+            category: "experience",
+            scoreMap: { "No knowledge": 25, "Few poses": 15, "Basic knowledge": 10, "Good knowledge": 5, "Expert knowledge": 0 }
+        },
+        {
+            id: 28,
+            text: "What style of yoga interests you most?",
+            options: ["Hatha (gentle)", "Vinyasa (flow)", "Iyengar (alignment)", "Restorative (relaxing)", "Power (intense)", "Not sure"],
+            category: "experience",
+            scoreMap: { "Hatha (gentle)": 5, "Vinyasa (flow)": 10, "Iyengar (alignment)": 5, "Restorative (relaxing)": 0, "Power (intense)": 20, "Not sure": 15 }
+        },
+        {
+            id: 29,
+            text: "Primary yoga goal?",
+            options: ["Stress reduction", "Flexibility", "Strength building", "Pain relief", "Weight management", "Spiritual growth"],
+            category: "goals",
+            scoreMap: { "Stress reduction": 20, "Flexibility": 15, "Strength building": 10, "Pain relief": 25, "Weight management": 15, "Spiritual growth": 5 }
+        },
+        {
+            id: 30,
+            text: "Secondary yoga goals?",
+            options: ["Better posture", "Improved sleep", "More energy", "Better balance", "Mental clarity", "All of above"],
+            category: "goals",
+            scoreMap: { "Better posture": 10, "Improved sleep": 15, "More energy": 10, "Better balance": 10, "Mental clarity": 10, "All of above": 20 }
+        },
+        {
+            id: 31,
+            text: "Time available for daily practice?",
+            options: ["5-10 minutes", "15-20 minutes", "30 minutes", "45 minutes", "60+ minutes"],
+            category: "goals",
+            scoreMap: { "5-10 minutes": 25, "15-20 minutes": 15, "30 minutes": 5, "45 minutes": 0, "60+ minutes": 0 }
+        },
+        {
+            id: 32,
+            text: "Preferred practice time?",
+            options: ["Morning", "Afternoon", "Evening", "Before bed", "Anytime"],
+            category: "goals",
+            scoreMap: { "Morning": 0, "Afternoon": 5, "Evening": 10, "Before bed": 5, "Anytime": 0 }
+        },
+        {
+            id: 33,
+            text: "Commitment level to 30-day program?",
+            options: ["100% committed", "Very committed", "Moderately committed", "Somewhat committed", "Will try my best"],
+            category: "goals",
+            scoreMap: { "100% committed": 0, "Very committed": 5, "Moderately committed": 15, "Somewhat committed": 25, "Will try my best": 20 }
+        },
+
+        // Section 5: Physical Capabilities (7 questions)
+        {
+            id: 34,
+            text: "Can you touch your toes?",
+            options: ["Easily", "With slight bend", "Fingers to shins", "Can't reach shins", "Significant difficulty"],
+            category: "physical",
+            scoreMap: { "Easily": 0, "With slight bend": 10, "Fingers to shins": 20, "Can't reach shins": 30, "Significant difficulty": 40 }
+        },
+        {
+            id: 35,
+            text: "Can you hold a plank for 30 seconds?",
+            options: ["Easily 60+ seconds", "Yes, 30 seconds", "With difficulty", "Less than 15 seconds", "Cannot do plank"],
+            category: "physical",
+            scoreMap: { "Easily 60+ seconds": 0, "Yes, 30 seconds": 10, "With difficulty": 20, "Less than 15 seconds": 30, "Cannot do plank": 40 }
+        },
+        {
+            id: 36,
+            text: "Balance on one leg with eyes closed?",
+            options: ["30+ seconds", "15-30 seconds", "5-15 seconds", "Less than 5 seconds", "Cannot balance"],
+            category: "physical",
+            scoreMap: { "30+ seconds": 0, "15-30 seconds": 10, "5-15 seconds": 20, "Less than 5 seconds": 30, "Cannot balance": 40 }
+        },
+        {
+            id: 37,
+            text: "Comfort level with kneeling positions?",
+            options: ["Very comfortable", "Comfortable", "Some discomfort", "Painful", "Cannot kneel"],
+            category: "physical",
+            scoreMap: { "Very comfortable": 0, "Comfortable": 10, "Some discomfort": 20, "Painful": 30, "Cannot kneel": 40 }
+        },
+        {
+            id: 38,
+            text: "Comfort level with sitting cross-legged?",
+            options: ["Very comfortable", "Comfortable", "Some discomfort", "Painful", "Cannot sit cross-legged"],
+            category: "physical",
+            scoreMap: { "Very comfortable": 0, "Comfortable": 10, "Some discomfort": 20, "Painful": 30, "Cannot sit cross-legged": 40 }
+        },
+        {
+            id: 39,
+            text: "Upper body strength for push-ups?",
+            options: ["10+ push-ups", "5-10 push-ups", "1-5 push-ups", "Knee push-ups only", "Cannot do push-ups"],
+            category: "physical",
+            scoreMap: { "10+ push-ups": 0, "5-10 push-ups": 10, "1-5 push-ups": 20, "Knee push-ups only": 30, "Cannot do push-ups": 40 }
+        },
+        {
+            id: 40,
+            text: "Lower body strength for squats?",
+            options: ["20+ squats", "10-20 squats", "5-10 squats", "1-5 squats", "Difficulty with squats"],
+            category: "physical",
+            scoreMap: { "20+ squats": 0, "10-20 squats": 10, "5-10 squats": 20, "1-5 squats": 30, "Difficulty with squats": 40 }
+        },
+
+        // Section 6: Mental & Emotional Health (10 questions)
+        {
+            id: 41,
+            text: "Current stress management?",
+            options: ["Excellent", "Good", "Average", "Poor", "No management"],
+            category: "mental",
+            scoreMap: { "Excellent": 0, "Good": 10, "Average": 20, "Poor": 30, "No management": 40 }
+        },
+        {
+            id: 42,
+            text: "Ability to focus and concentrate?",
+            options: ["Excellent focus", "Good focus", "Average", "Poor focus", "Difficulty focusing"],
+            category: "mental",
+            scoreMap: { "Excellent focus": 0, "Good focus": 10, "Average": 20, "Poor focus": 30, "Difficulty focusing": 40 }
+        },
+        {
+            id: 43,
+            text: "Quality of sleep?",
+            options: ["Deep restful sleep", "Generally good sleep", "Interrupted sleep", "Light sleep", "Chronic insomnia"],
+            category: "mental",
+            scoreMap: { "Deep restful sleep": 0, "Generally good sleep": 10, "Interrupted sleep": 20, "Light sleep": 30, "Chronic insomnia": 40 }
+        },
+        {
+            id: 44,
+            text: "Energy levels throughout day?",
+            options: ["Consistent energy", "Morning energy", "Afternoon slump", "Low energy", "Chronic fatigue"],
+            category: "mental",
+            scoreMap: { "Consistent energy": 0, "Morning energy": 10, "Afternoon slump": 20, "Low energy": 30, "Chronic fatigue": 40 }
+        },
+        {
+            id: 45,
+            text: "Mood stability?",
+            options: ["Very stable", "Generally stable", "Some fluctuations", "Frequent mood swings", "Unstable moods"],
+            category: "mental",
+            scoreMap: { "Very stable": 0, "Generally stable": 10, "Some fluctuations": 20, "Frequent mood swings": 30, "Unstable moods": 40 }
+        },
+        {
+            id: 46,
+            text: "Anxiety levels?",
+            options: ["No anxiety", "Mild occasional", "Moderate anxiety", "High anxiety", "Severe anxiety"],
+            category: "mental",
+            scoreMap: { "No anxiety": 0, "Mild occasional": 10, "Moderate anxiety": 20, "High anxiety": 30, "Severe anxiety": 40 }
+        },
+        {
+            id: 47,
+            text: "Meditation experience?",
+            options: ["Daily practice", "Weekly practice", "Occasional", "Tried few times", "No experience"],
+            category: "mental",
+            scoreMap: { "Daily practice": 0, "Weekly practice": 5, "Occasional": 15, "Tried few times": 25, "No experience": 35 }
+        },
+        {
+            id: 48,
+            text: "Breath awareness?",
+            options: ["Always aware", "Often aware", "Sometimes aware", "Rarely aware", "Never aware"],
+            category: "mental",
+            scoreMap: { "Always aware": 0, "Often aware": 10, "Sometimes aware": 20, "Rarely aware": 30, "Never aware": 40 }
+        },
+        {
+            id: 49,
+            text: "Mind-body connection awareness?",
+            options: ["Strong connection", "Good connection", "Some awareness", "Little awareness", "No awareness"],
+            category: "mental",
+            scoreMap: { "Strong connection": 0, "Good connection": 10, "Some awareness": 20, "Little awareness": 30, "No awareness": 40 }
+        },
+        {
+            id: 50,
+            text: "Motivation for personal growth?",
+            options: ["Extremely motivated", "Very motivated", "Moderately motivated", "Somewhat motivated", "Low motivation"],
+            category: "mental",
+            scoreMap: { "Extremely motivated": 0, "Very motivated": 5, "Moderately motivated": 15, "Somewhat motivated": 25, "Low motivation": 35 }
+        }
+    ];
+
+    // ==================== UI FUNCTIONS ====================
+
+    function initApp() {
+        showQuestion();
+        setupEventListeners();
+        document.getElementById('quiz-bg').classList.remove('hidden');
+    }
+
+    function showQuestion() {
+        if (appState.currentQuestion >= appState.totalQuestions) {
+            generatePersonalizedProgram();
+            return;
+        }
+        
+        const question = questions[appState.currentQuestion];
+        document.getElementById('question-text').textContent = question.text;
+        
+        // Update progress
+        const progressPercent = ((appState.currentQuestion + 1) / appState.totalQuestions) * 100;
+        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+        document.getElementById('question-counter').textContent = `${appState.currentQuestion + 1}/${appState.totalQuestions}`;
+        
+        // Update section label
+        const sections = ["Demographics", "Health Symptoms", "Lifestyle", "Yoga Goals", "Physical Ability", "Mental Health"];
+        const sectionIndex = Math.floor(appState.currentQuestion / 10);
+        document.getElementById('step-label').textContent = sections[sectionIndex] || "Assessment";
+        document.getElementById('progress-text').textContent = `Section ${sectionIndex + 1} of 6 - ${sections[sectionIndex]}`;
+        
+        // Clear and show options
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        
+        question.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.className = "w-full option-btn p-3.5 rounded-lg text-sm font-bold flex justify-between items-center mb-1.5";
+            btn.innerHTML = `
+                <span class="text-left">${option}</span>
+                <div class="w-5 h-5 rounded-full border border-gold-primary/40 flex items-center justify-center">
+                    <div class="w-2 h-2 rounded-full bg-gold-primary opacity-0"></div>
+                </div>
+            `;
+            
+            // Add animation delay for staggered appearance
+            btn.style.animationDelay = `${index * 0.05}s`;
+            btn.classList.add('fade-in');
+            
+            btn.onclick = () => handleAnswer(option, question);
+            container.appendChild(btn);
+        });
+        
+        // Show quiz section
+        document.getElementById('quiz-section').classList.remove('hidden');
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('yoga-section').classList.add('hidden');
+        
+        // Update background
+        updateBackground('quiz');
+    }
+
+    function handleAnswer(answer, question) {
+        // Store in user profile
+        appState.userProfile[`q${question.id}`] = answer;
+        
+        // Store gender and age
+        if (question.id === 1) appState.gender = answer;
+        if (question.id === 2) appState.age = answer;
+        if (question.id === 3) appState.primaryGoal = answer;
+        
+        // Update scores based on answers
+        updateScores(answer, question);
+        
+        // Add visual feedback
+        const selectedOption = event.target.closest('.option-btn');
+        if (selectedOption) {
+            selectedOption.classList.add('bg-gold-primary/20');
+            selectedOption.style.borderColor = 'var(--gold-primary)';
+            selectedOption.querySelector('.w-2.h-2').classList.remove('opacity-0');
+        }
+        
+        // Move to next question
+        setTimeout(() => {
+            appState.currentQuestion++;
+            showQuestion();
+        }, 300);
+    }
+
+    function updateScores(answer, question) {
+        // Use score map for accurate scoring
+        if (question.scoreMap && question.scoreMap[answer] !== undefined) {
+            const score = question.scoreMap[answer];
+            
+            // Categorize scores based on question type
+            if (question.category === "symptoms") {
+                if (question.id >= 6 && question.id <= 10) {
+                    appState.scores.flexibility += score;
+                }
+                if (question.id >= 11 && question.id <= 15) {
+                    appState.scores.pain += score;
+                }
+            }
+            
+            if (question.category === "lifestyle") {
+                if (question.id >= 20 && question.id <= 25) {
+                    appState.scores.stress += score;
+                }
+            }
+            
+            if (question.category === "physical") {
+                appState.scores.strength += score;
+                appState.scores.balance += score;
+            }
+            
+            if (question.category === "mental") {
+                appState.scores.focus += score;
+                appState.scores.stress += score;
+            }
+            
+            // Specific goal-based scoring
+            if (question.id === 29) {
+                if (answer === "Stress reduction") appState.scores.stress += 30;
+                if (answer === "Flexibility") appState.scores.flexibility += 30;
+                if (answer === "Strength building") appState.scores.strength += 30;
+                if (answer === "Pain relief") appState.scores.pain += 40;
+            }
+        }
+    }
+
+    function generatePersonalizedProgram() {
+        document.getElementById('quiz-section').classList.add('hidden');
+        document.getElementById('analysis-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('analysis');
+        
+        // Analyze user profile and select appropriate yoga poses
+        analyzeUserProfile();
+        
+        // Calculate scores with normalization
+        const totalPossibleScore = 1000;
+        const totalUserScore = Object.values(appState.scores).reduce((a, b) => a + b, 0);
+        const scorePercentage = Math.min(100, Math.round((totalUserScore / totalPossibleScore) * 100));
+        
+        // Calculate individual scores for display
+        const focusScore = Math.min(100, Math.round((appState.scores.flexibility + appState.scores.strength) / 10));
+        const wellnessScore = Math.min(100, Math.round(100 - (appState.scores.stress + appState.scores.pain) / 8));
+        const programScore = Math.min(100, Math.round(100 - (scorePercentage / 3)));
+        
+        // Animate scores
+        animateScore('focus-score', focusScore);
+        animateScore('wellness-score', wellnessScore);
+        animateScore('program-score', programScore);
+        
+        // Generate analysis and solution points
+        generateAnalysis();
+    }
+
+    function analyzeUserProfile() {
+        appState.dayYogas = {};
+        appState.dayProgress = {};
+        appState.selectedYogas = [];
+        
+        // Determine primary focus area based on highest score
+        const scores = appState.scores;
+        const maxScore = Math.max(scores.flexibility, scores.strength, scores.stress, scores.pain);
+        
+        let primaryCategory = "beginner";
+        
+        if (maxScore === scores.pain && scores.pain > 100) {
+            primaryCategory = "therapeutic";
+        } else if (maxScore === scores.stress && scores.stress > 80) {
+            primaryCategory = "breathwork";
+        } else if (maxScore === scores.flexibility && scores.flexibility > 80) {
+            primaryCategory = "flexibility";
+        } else if (maxScore === scores.strength && scores.strength > 80) {
+            primaryCategory = "intermediate";
+        } else if (scores.focus < 30 && scores.balance < 30) {
+            // Good control = advanced exercises
+            primaryCategory = "advanced";
+        }
+        
+        // Generate yoga program for 30 days
+        generate30DayProgram(primaryCategory);
+    }
+
+    function generate30DayProgram(primaryCategory) {
+        appState.dayYogas = {};
+        appState.dayProgress = {};
+        
+        // For each day, select appropriate yoga poses
+        for (let day = 1; day <= 30; day++) {
+            appState.dayYogas[day] = generateDayYogas(day, primaryCategory);
+            appState.dayProgress[day] = [];
+        }
+        
+        // Set current day yoga
+        appState.selectedYogas = appState.dayYogas[1];
+    }
+
+    function generateDayYogas(day, primaryCategory) {
+        let dayYogas = [];
+        
+        // Helper function to get filtered yoga poses
+        const getFilteredYogas = (category, count) => {
+            let yogas = yogaLibrary[category] || [];
+            return shuffleArray(yogas).slice(0, count);
+        };
+        
+        // Day-specific progression
+        if (day <= 7) {
+            // Week 1: Foundational poses
+            dayYogas.push(...getFilteredYogas("beginner", 4));
+            dayYogas.push(...getFilteredYogas("therapeutic", 2));
+        } else if (day <= 14) {
+            // Week 2: Add primary category
+            dayYogas.push(...getFilteredYogas("beginner", 2));
+            dayYogas.push(...getFilteredYogas(primaryCategory, 3));
+            dayYogas.push(...getFilteredYogas("breathwork", 1));
+        } else if (day <= 21) {
+            // Week 3: Focus on primary category
+            dayYogas.push(...getFilteredYogas("intermediate", 1));
+            dayYogas.push(...getFilteredYogas(primaryCategory, 4));
+            dayYogas.push(...getFilteredYogas("breathwork", 1));
+        } else {
+            // Week 4: Advanced and athletic
+            dayYogas.push(...getFilteredYogas("advanced", 1));
+            dayYogas.push(...getFilteredYogas("athletic", 2));
+            dayYogas.push(...getFilteredYogas(primaryCategory, 2));
+            dayYogas.push(...getFilteredYogas("breathwork", 1));
+        }
+        
+        // Ensure exactly 6 yoga practices per day
+        if (dayYogas.length > 6) {
+            dayYogas = dayYogas.slice(0, 6);
+        }
+        
+        // Sort by difficulty
+        dayYogas.sort((a, b) => {
+            const difficultyOrder = { "beginner": 1, "intermediate": 2, "advanced": 3 };
+            return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+        });
+        
+        return dayYogas;
+    }
+
+    function generateAnalysis() {
+        const analysisText = document.getElementById('analysis-text');
+        const solutionPoints = document.getElementById('solution-points');
+        
+        // Generate analysis based on scores
+        let analysis = "Based on your comprehensive 50-point yoga assessment, ";
+        
+        if (appState.scores.pain > 100) {
+            analysis += "you have significant pain issues that require therapeutic yoga focus. ";
+        } else if (appState.scores.pain > 50) {
+            analysis += "you experience discomfort that can be addressed with specific poses. ";
+        } else {
+            analysis += "you have good physical comfort level for yoga practice. ";
+        }
+        
+        if (appState.scores.stress > 80) {
+            analysis += "Stress management is a key priority for your practice. ";
+        } else if (appState.scores.stress > 40) {
+            analysis += "Moderate stress levels indicate need for relaxation techniques. ";
+        }
+        
+        if (appState.scores.flexibility > 80) {
+            analysis += "Flexibility improvement will be a major focus area. ";
+        }
+        
+        if (appState.scores.strength > 80) {
+            analysis += "Strength building will enhance your practice. ";
+        }
+        
+        analysis += `Your personalized 30-day yoga program includes 6 carefully selected practices each day, specifically tailored for ${appState.primaryGoal || 'your wellness goals'}.`;
+        
+        analysisText.textContent = analysis;
+        
+        // Generate solution points
+        solutionPoints.innerHTML = '';
+        
+        const solutions = [
+            "🎯 <span class='text-gold-light font-bold'>Goal-Oriented:</span> Program aligned with your primary objectives",
+            "📊 <span class='text-gold-light font-bold'>Progressive Plan:</span> Gradually increases difficulty over 30 days",
+            "🔄 <span class='text-gold-light font-bold'>Sequential Learning:</span> Each pose builds on previous ones",
+            "⏱️ <span class='text-gold-light font-bold'>Time-Efficient:</span> 15-30 minutes daily commitment",
+            "📈 <span class='text-gold-light font-bold'>Measurable Results:</span> Track progress with completion system",
+            "🎬 <span class='text-gold-light font-bold'>Video Guidance:</span> Professional demonstrations for each pose"
+        ];
+        
+        solutions.forEach((solution, index) => {
+            const point = document.createElement('div');
+            point.className = "text-xs text-gray-300 flex items-start fade-in";
+            point.style.animationDelay = `${index * 0.1}s`;
+            point.innerHTML = `<i class="fas fa-check text-green-500 mr-2 mt-0.5"></i> ${solution}`;
+            solutionPoints.appendChild(point);
+        });
+    }
+
+    function showYogaProgram() {
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('yoga-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('yoga');
+        
+        renderYogaProgram();
+    }
+
+    function renderYogaProgram() {
+        const yogaList = document.getElementById('yoga-list');
+        yogaList.innerHTML = '';
+        
+        // Update day display
+        document.getElementById('current-day').textContent = appState.currentDay;
+        
+        // Get yoga for current day
+        const currentDayYogas = appState.dayYogas[appState.currentDay] || [];
+        const completedYogas = appState.dayProgress[appState.currentDay] || [];
+        
+        // Update stats
+        const completedCount = completedYogas.length;
+        const totalYogas = currentDayYogas.length;
+        document.getElementById('completion-stats').textContent = `${completedCount}/${totalYogas} completed`;
+        
+        if (currentDayYogas.length === 0) {
+            yogaList.innerHTML = `
+                <div class="text-center py-8">
+                    <i class="fas fa-exclamation-triangle text-3xl text-yellow-500 mb-3"></i>
+                    <p class="text-gray-300">No yoga practices generated for today. Please restart assessment.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        currentDayYogas.forEach((yoga, index) => {
+            const isCompleted = completedYogas.includes(yoga.id);
+            const isCurrent = index === completedYogas.length;
+            const isLocked = index > completedYogas.length;
+            
+            const card = document.createElement('div');
+            card.className = `yoga-card p-3.5 rounded-lg ${isLocked ? 'locked' : ''} ${isCurrent ? 'current' : ''} ${isCompleted ? 'completed' : ''} fade-in`;
+            card.style.animationDelay = `${index * 0.08}s`;
+            
+            card.innerHTML = `
+                <div class="flex items-center gap-3.5">
+                    <div class="number-indicator ${isCurrent ? 'number-current' : isCompleted ? 'number-completed' : 'number-locked'}">
+                        ${index + 1}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="category-tag">${yoga.category}</span>
+                            <span class="text-xs text-gray-400 font-bold">${yoga.difficulty}</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white mb-1.5 truncate text-3d-white">${yoga.name}</h3>
+                        <p class="text-xs text-gray-300 line-clamp-1 text-3d-secondary">${yoga.benefit}</p>
+                        <div class="flex items-center gap-3.5 mt-2 text-xs text-gray-400">
+                            <span class="flex items-center"><i class="fas fa-clock mr-1.5"></i> ${yoga.duration}</span>
+                            <span class="flex items-center"><i class="fas fa-redo mr-1.5"></i> ${yoga.holds}</span>
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        ${isLocked ? 
+                            '<i class="fas fa-lock text-base text-gray-600"></i>' : 
+                         isCompleted ? 
+                            '<i class="fas fa-check-circle text-lg text-green-500" style="filter: drop-shadow(0 2px 0 rgba(0,0,0,0.3))"></i>' : 
+                            '<i class="fas fa-play-circle text-lg text-gold-primary" style="filter: drop-shadow(0 2px 0 rgba(212,175,55,0.3))"></i>'}
+                    </div>
+                </div>
+            `;
+            
+            if (!isLocked) {
+                card.onclick = () => openYogaVideo(yoga, index);
+            }
+            
+            yogaList.appendChild(card);
+        });
+        
+        // Scroll to current yoga
+        setTimeout(() => {
+            const currentCard = document.querySelector('.yoga-card.current');
+            if (currentCard) {
+                currentCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 300);
+    }
+
+    function openYogaVideo(yoga, index) {
+        appState.currentVideoIndex = index;
+        
+        // Clear previous content
+        const videoFrame = document.getElementById('video-frame');
+        videoFrame.innerHTML = '';
+        
+        // Create 16:9 YouTube iframe with proper settings
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${yoga.videoCode}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1`;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        iframe.style.position = "absolute";
+        iframe.style.top = "0";
+        iframe.style.left = "0";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        
+        videoFrame.appendChild(iframe);
+        
+        // Update modal info
+        document.getElementById('video-title').textContent = yoga.name;
+        document.getElementById('video-description').textContent = yoga.description;
+        document.getElementById('video-duration').textContent = yoga.duration;
+        document.getElementById('video-holds').textContent = yoga.holds;
+        document.getElementById('video-category').textContent = yoga.category;
+        document.getElementById('solution-text').textContent = yoga.solution;
+        
+        // Show modal
+        document.getElementById('video-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Add modal background
+        document.querySelector('.modal-background').classList.remove('hidden');
+    }
+
+    function repeatCurrentVideo() {
+        const currentDayYogas = appState.dayYogas[appState.currentDay] || [];
+        const currentYoga = currentDayYogas[appState.currentVideoIndex];
+        if (currentYoga) {
+            openYogaVideo(currentYoga, appState.currentVideoIndex);
+        }
+    }
+
+    function nextVideo() {
+        // Mark current yoga as completed for current day
+        const currentDayYogas = appState.dayYogas[appState.currentDay] || [];
+        const currentYoga = currentDayYogas[appState.currentVideoIndex];
+        
+        if (currentYoga) {
+            if (!appState.dayProgress[appState.currentDay]) {
+                appState.dayProgress[appState.currentDay] = [];
+            }
+            
+            if (!appState.dayProgress[appState.currentDay].includes(currentYoga.id)) {
+                appState.dayProgress[appState.currentDay].push(currentYoga.id);
+            }
+        }
+        
+        closeVideoModal();
+        
+        // Check if all yoga completed for current day
+        const completedYogas = appState.dayProgress[appState.currentDay] || [];
+        const totalYogas = currentDayYogas.length;
+        
+        if (completedYogas.length === totalYogas) {
+            // Day completed, move to next day
+            if (appState.currentDay < 30) {
+                appState.currentDay++;
+                setTimeout(() => {
+                    renderYogaProgram();
+                    // Show completion message
+                    const completionMsg = document.createElement('div');
+                    completionMsg.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-900/90 text-white px-4 py-2 rounded-lg z-50 fade-in";
+                    completionMsg.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Day ${appState.currentDay-1} completed! Starting Day ${appState.currentDay}`;
+                    document.body.appendChild(completionMsg);
+                    setTimeout(() => completionMsg.remove(), 3000);
+                }, 300);
+            } else {
+                setTimeout(() => {
+                    // Show final completion message
+                    const finalMsg = document.createElement('div');
+                    finalMsg.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-gold-primary/90 text-black px-4 py-3 rounded-lg z-50 fade-in";
+                    finalMsg.innerHTML = `<i class="fas fa-trophy mr-2"></i> <strong>Congratulations!</strong> You've completed the 30-day yoga program!`;
+                    document.body.appendChild(finalMsg);
+                    setTimeout(() => finalMsg.remove(), 5000);
+                }, 300);
+            }
+        } else {
+            renderYogaProgram();
+        }
+    }
+
+    function closeVideoModal() {
+        document.getElementById('video-modal').classList.add('hidden');
+        document.getElementById('video-frame').innerHTML = '';
+        document.body.style.overflow = 'auto';
+        document.querySelector('.modal-background').classList.add('hidden');
+    }
+
+    function restartAssessment() {
+        // Reset all state
+        appState = {
+            currentQuestion: 0,
+            gender: null,
+            age: null,
+            primaryGoal: null,
+            healthCondition: null,
+            experience: null,
+            symptoms: [],
+            scores: { flexibility: 0, strength: 0, stress: 0, balance: 0, pain: 0, focus: 0 },
+            currentDay: 1,
+            completedYogas: [],
+            totalQuestions: 50,
+            selectedCategory: null,
+            selectedYogas: [],
+            currentVideoIndex: 0,
+            userProfile: {},
+            dayProgress: {},
+            dayYogas: {}
+        };
+        
+        // Reset UI
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('yoga-section').classList.add('hidden');
+        document.getElementById('quiz-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('quiz');
+        
+        // Restart questions
+        showQuestion();
+    }
+
+    // ==================== HELPER FUNCTIONS ====================
+
+    function animateScore(elementId, targetValue) {
+        const element = document.getElementById(elementId);
+        let current = 0;
+        const increment = targetValue / 40;
+        const interval = setInterval(() => {
+            current += increment;
+            if (current >= targetValue) {
+                current = targetValue;
+                clearInterval(interval);
+            }
+            element.textContent = Math.round(current) + "%";
+        }, 20);
+    }
+
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    function updateBackground(section) {
+        // Hide all backgrounds first
+        document.getElementById('quiz-bg').classList.add('hidden');
+        document.getElementById('analysis-bg').classList.add('hidden');
+        document.getElementById('yoga-bg').classList.add('hidden');
+        
+        // Show appropriate background
+        if (section === 'quiz') {
+            document.getElementById('quiz-bg').classList.remove('hidden');
+        } else if (section === 'analysis') {
+            document.getElementById('analysis-bg').classList.remove('hidden');
+        } else if (section === 'yoga') {
+            document.getElementById('yoga-bg').classList.remove('hidden');
+        }
+    }
+
+    function setupEventListeners() {
+        // Escape key closes modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!document.getElementById('video-modal').classList.contains('hidden')) {
+                    closeVideoModal();
+                }
+            }
+        });
+        
+        // Touch feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.transform = 'translateY(1px)';
+            });
+            btn.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    btn.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Handle back button for WebView
+        window.addEventListener('popstate', function(event) {
+            if (!document.getElementById('video-modal').classList.contains('hidden')) {
+                closeVideoModal();
+                history.pushState(null, null, window.location.href);
+            }
+        });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
